@@ -17,7 +17,7 @@ public class StatsService {
         int maxMonth = 0;
         int month = 0;
         for (int sale : sales) {
-            if (sale > sales[maxMonth]) {
+            if (sale >= sales[maxMonth]) {
                 maxMonth = month;
             }
 
@@ -32,7 +32,7 @@ public class StatsService {
         int minMonth = 0;
         int month = 0;
         for (int sale : sales) {
-            if (sale < sales[minMonth]) {
+            if (sale <= sales[minMonth]) {
                 minMonth = month;
             }
             month = month + 1;
@@ -42,8 +42,9 @@ public class StatsService {
 
     public int findSalesBelowAverage(int[] sales) {
         int month = 0;
+        int salesAverage = calculateAverage(sales);
         for (int sale : sales) {
-            if (sale < calculateAverage(sales)) {
+            if (sale < salesAverage) {
                 month = month + 1;
             }
 
@@ -53,8 +54,9 @@ public class StatsService {
 
     public int findSalesAboveAverage(int[] sales) {
         int month = 0;
+        int salesAverage = calculateAverage(sales);
         for (int sale : sales) {
-            if (sale > calculateAverage(sales)) {
+            if (sale > salesAverage) {
                 month = month + 1;
             }
 
